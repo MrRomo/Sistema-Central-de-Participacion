@@ -1,0 +1,154 @@
+.<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IEEE</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="shortcut icon" href="images/LogoGamma.ico">
+  <link rel="stylesheet" href="css/pagestyle.css">
+
+</head>
+<body>
+
+	 <section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+          <div class="row">
+            <div class="col text-center">
+              <h1>Register</h1>
+             
+              <img src="image.jpg">
+              <h3>Mas beneficios..</h3>
+
+<p>Ver enlace: <a>goo.gl/gHy7d7</a></p>
+<img src="descuento.png"  width="300px" height="200px">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="Name" id="1">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="code student" id="2">
+            </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="Cc" id="3">
+            </div>
+          </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" id="4">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="program" id="5">
+            </div>
+          </div>
+                    <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="semester" id="6">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="Direction" id="7">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="Phone number" id="8">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+            	<p>¿En qué actividades le gustaría participar siendo miembro de la rama estudiantil de la IEEE ?</p>
+              <input type="text" class="form-control" placeholder="¿En qué actividades le gustaría participar siendo miembro de la rama estudiantil de la IEEE ?" id="9">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+            	<p>¿Cómo se enteró de esta organización ?</p>
+              <input type="text" class="form-control" placeholder="¿Cómo se enteró de esta organización ?" id="10">
+            </div>
+          </div>
+          <div class="row justify-content-start mt-4">
+            <div class="col">
+              <div class="form-check">
+      
+              </div>
+
+              <button class="btn btn-primary mt-4">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsfcZ4l77h_AeeAquk5BESGY9nZedLjhA",
+    authDomain: "ieee-a5f48.firebaseapp.com",
+    databaseURL: "https://ieee-a5f48.firebaseio.com",
+    projectId: "ieee-a5f48",
+    storageBucket: "",
+    messagingSenderId: "1007853756581",
+    appId: "1:1007853756581:web:11707a50a352b2ed"
+  };
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+   var db = firebase.firestore();
+</script>
+<script type="text/javascript">
+  
+function guardar() {
+
+  // body...
+
+  db.collection("miembros").doc($('#2').val()).set({
+    uno: $('#1').val(),
+    dos: $('#2').val(),
+ 	tres: $('#3').val(),
+ 	cuatro: $('#4').val(),
+ 	cinco: $('#5').val(),
+ 	seis: $('#6').val(),
+ 	siete: $('#7').val(),
+ 	ocho: $('#8').val(),
+ 	nueve: $('#9').val(),
+ 	diez: $('#10').val(),
+ 	estado: "voluntario"
+
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ");
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
+
+</script>
+</body>
+</html>
