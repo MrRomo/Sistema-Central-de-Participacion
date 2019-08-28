@@ -39,7 +39,7 @@ async function getPerson() {
         data = doc.data()
         index = Codes.indexOf(data.code)
         console.log("index of code:", index);
-        if(index<0){
+        if((index<0)||(true)){
             personList.add({ id: data.code, name: `${data.firstname} ${data.lastname}`, code: data.code });
         }
         

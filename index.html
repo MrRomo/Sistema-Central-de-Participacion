@@ -1,154 +1,160 @@
-.<!DOCTYPE html>
+.
+<!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>IEEE</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
   <link rel="shortcut icon" href="images/LogoGamma.ico">
-  <link rel="stylesheet" href="css/pagestyle.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-	 <section>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
-          <div class="row">
-            <div class="col text-center">
-              <h1>Register</h1>
-             
-              <img src="image.jpg">
-              <h3>Mas beneficios..</h3>
+<body class="background">
 
-<p>Ver enlace: <a>goo.gl/gHy7d7</a></p>
-<img src="descuento.png"  width="300px" height="200px">
+  <section>
+    <div class="">
+      <div class="card-header">
+        <div class="row mx-auto">
+          <div class="col-md-2">
+            <img src="LOGO.png" width="60%" style="display: inherit; margin: auto">
+          </div>
+          <div class="col-md-8">
+            <h1 class="text-center title">Registro inicio de actividades de la rama estudiantil IEEE Unimagdalena</h1>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-header">
+              <h2 class="text-center">Registrados</h2>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div id=personList>
+                  <table class="table table-striped">
+                    <thead>
+                      <th colspan="2">
+                        <input type="text" class="search form-control" id="searchPerson" placeholder="Buscar persona" />
+                      </th>
+                      <tr class="mx-auto">
+                        <th class="sort" data-sort="name" class="scope">Nombre</th>
+                        <th class="sort" data-sort="code" class="scope">Codigo</th>
+                        <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                      </tr>
+                    </thead>
+                    <tbody class="list">
+                      <tr>
+                        <td class="id" style="display:none;"></td>
+                        <td class="name" scope="row"></td>
+                        <td class="code"></td>
+                        <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
             </div>
           </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="Name" id="1">
+          <div class="col-md-6">
+            <div class="card-header">
+              <h2 class="text-center">Registro asistentes</h2>
             </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="code student" id="2">
-            </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="Cc" id="3">
-            </div>
-          </div>
-          </div>
-          <div class="row align-items-center mt-4">
-            <div class="col">
-              <input type="email" class="form-control" placeholder="Email" id="4">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="program" id="5">
-            </div>
-          </div>
-                    <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="semester" id="6">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="Direction" id="7">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-              <input type="text" class="form-control" placeholder="Phone number" id="8">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-            	<p>¿En qué actividades le gustaría participar siendo miembro de la rama estudiantil de la IEEE ?</p>
-              <input type="text" class="form-control" placeholder="¿En qué actividades le gustaría participar siendo miembro de la rama estudiantil de la IEEE ?" id="9">
-            </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col mt-4">
-            	<p>¿Cómo se enteró de esta organización ?</p>
-              <input type="text" class="form-control" placeholder="¿Cómo se enteró de esta organización ?" id="10">
-            </div>
-          </div>
-          <div class="row justify-content-start mt-4">
-            <div class="col">
-              <div class="form-check">
-      
+            <div class="card-body mx-auto m-4">
+              <div class="row form-group">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col mt-4">
+                  <input type="number" class="form-control" placeholder="Telefono" id="cell">
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input type="email" class="form-control" placeholder="Email" id="email">
+                </div>
               </div>
 
-              <button class="btn btn-primary mt-4">Submit</button>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="Codigo" id="code" required>
+                </div>
+              </div>
+              <div class="row align-items-center mt-4 carrera">
+                <div class="col">
+                  <select class="custom-select form-control" id="carreerSelector">
+                    <option>No aplica</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input type="checkbox" aria-label="interest" id="interest" value="true">
+                      ¿Tiene interes en la Rama Estudiantil IEEE Unimagdalena?
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-success mt-4" id="guardar" onclick="registrarAsistente()">Registrar</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </div>
   </section>
-<script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+  <div class="modal " tabindex="-1" role="dialog" id="alertModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title">Error de formulario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
-
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDsfcZ4l77h_AeeAquk5BESGY9nZedLjhA",
-    authDomain: "ieee-a5f48.firebaseapp.com",
-    databaseURL: "https://ieee-a5f48.firebaseio.com",
-    projectId: "ieee-a5f48",
-    storageBucket: "",
-    messagingSenderId: "1007853756581",
-    appId: "1:1007853756581:web:11707a50a352b2ed"
-  };
-  // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-   var db = firebase.firestore();
-</script>
-<script type="text/javascript">
-  
-function guardar() {
-
-  // body...
-
-  db.collection("miembros").doc($('#2').val()).set({
-    uno: $('#1').val(),
-    dos: $('#2').val(),
- 	tres: $('#3').val(),
- 	cuatro: $('#4').val(),
- 	cinco: $('#5').val(),
- 	seis: $('#6').val(),
- 	siete: $('#7').val(),
- 	ocho: $('#8').val(),
- 	nueve: $('#9').val(),
- 	diez: $('#10').val(),
- 	estado: "voluntario"
-
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ");
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
-}
-
-</script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script src="list.js"></script>
+  <script src="lista.js"></script>
+  <script src="keys.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
