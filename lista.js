@@ -23,9 +23,11 @@ $('#personList').click(async e=>{
             updatedAt: firebase.firestore.Timestamp.fromDate(new Date())
         }
         console.log('Register:', formAssistant);
-        
-        // await assistant.doc().set(formAssistant)
-        // await meeting.update({ assistant: +1 })
+        const meetingData = await meeting.get()
+        noAssistant = meetingData.data().assistant
+
+        await assistant.doc().set(formAssistant)        
+        await meeting.update({ assistant: noAssistant+1 })
         getPerson()    
     }
     

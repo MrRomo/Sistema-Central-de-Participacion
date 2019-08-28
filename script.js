@@ -35,7 +35,9 @@ async function registrarAsistente() {
         console.log('Asistencias: ',Assistant.docs);
         const Person = await person.doc($('#code').val()).get()
         if(Person.exists) name = Person.data().firstname + " " + Person.data().lastname
-
+        
+        
+        
         console.log('Person and name: ', Person, name);
         
         if (Assistant.docs.length) {
@@ -45,7 +47,10 @@ async function registrarAsistente() {
             
             (Person.exists) ? await person.doc($('#code').val()).update({ assistant: +1 }) : await person.doc($('#code').val()).set(formData)
             await assistant.doc().set(formAssistant)
-            await meeting.update({ assistant: +1 })
+            
+            const meetingData = await meeting.get()
+            noAssistant = meetingData.data().assistant
+            await meeting.update({ assistant: noAssistant+1 })
         }
         
         
