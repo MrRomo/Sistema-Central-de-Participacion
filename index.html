@@ -22,139 +22,65 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <link rel="shortcut icon" href="images/LogoGamma.ico">
+  <link rel="shortcut icon" href="LOGO.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="background">
-
-  <section>
-    <div class="">
+  <section class="nav-title">
+    <!-- barra de titulo y navegacion  -->
+    <div class="header">
       <div class="card-header">
         <div class="row mx-auto">
           <div class="col-md-2">
-            <img src="LOGO.png" width="60%" style="display: inherit; margin: auto">
+            <img src="LOGO.png" width="40%" style="display: inherit; margin: auto">
           </div>
-          <div class="col-md-8">
-            <h1 class="text-center title">Registro inicio de actividades de la rama estudiantil IEEE Unimagdalena</h1>
+          <div class="col-md-6">
+            <h1 class="text-center title" style="margin: auto;">Sistema Central de Participacion</h1>
+          </div>
+          <div class="col-md-4 mx-auto d-flex justify-content-around" style="margin: auto;">
+            <a href="" class="btn btn-info btn-section"><i class="fas fa-user-friends"></i></a>
+            <a href="" class="btn btn-info btn-section"><i class="fas fa-user-friends"></i></a>
+            <a href="" class="btn btn-info btn-section"><i class="fas fa-calendar-alt"></i></a>
           </div>
         </div>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card-header">
-              <h2 class="text-center">Registrados</h2>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div id=personList>
-                  <table class="table table-striped">
-                    <thead>
-                      <th colspan="2">
-                        <input type="text" class="search form-control" id="searchPerson" placeholder="Buscar persona" />
-                      </th>
-                      <tr class="mx-auto">
-                        <th class="sort" data-sort="name" class="scope">Nombre</th>
-                        <th class="sort" data-sort="code" class="scope">Codigo</th>
-                        <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
-                      </tr>
-                    </thead>
-                    <tbody class="list">
-                      <tr>
-                        <td class="id" style="display:none;"></td>
-                        <td class="name" scope="row"></td>
-                        <td class="code"></td>
-                        <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="card-header">
-              <h2 class="text-center">Registro asistentes</h2>
-            </div>
-            <div class="card-body mx-auto m-4">
-              <div class="row form-group">
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
-                </div>
-              </div>
-              <div class="row align-items-center">
-                <div class="col mt-4">
-                  <input type="number" class="form-control" placeholder="Telefono" id="cell">
-                </div>
-              </div>
-              <div class="row align-items-center mt-4">
-                <div class="col">
-                  <input type="email" class="form-control" placeholder="Email" id="email">
-                </div>
-              </div>
-
-              <div class="row align-items-center mt-4">
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Codigo" id="code" required>
-                </div>
-              </div>
-              <div class="row align-items-center mt-4 carrera">
-                <div class="col">
-                  <select class="custom-select form-control" id="carreerSelector">
-                    <option>No aplica</option>
-                  </select>
-                </div>
-              </div>
-              <div class="row align-items-center mt-4">
-                <div class="col">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">
-                      <input type="checkbox" aria-label="interest" id="interest" value="true">
-                      ¿Tiene interes en la Rama Estudiantil IEEE Unimagdalena?
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <button class="btn btn-success mt-4" id="guardar" onclick="registrarAsistente()">Registrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </section>
-  <div class="modal " tabindex="-1" role="dialog" id="alertModal">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content ">
-        <div class="modal-header bg-warning">
-          <h5 class="modal-title">Error de formulario</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p id="modalMessage"></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
-  <script src="list.js"></script>
-  <script src="lista.js"></script>
-  <script src="keys.js"></script>
-  <script src="script.js"></script>
+  <section class="container mx-auto p-4">
+
+    <div class="header">
+      <i class="fas fa-user-friends title"></i>
+      <h2 style="display: inline-block">Personas</h2>
+    </div>
+    <div id=personList>
+      <table class="table table-striped">
+        <thead>
+          <th colspan="2">
+            <input type="text" class="search form-control" id="searchPerson" placeholder="Buscar persona" />
+          </th>
+          <tr class="mx-auto">
+            <th class="sort" data-sort="name" class="scope">Nombre</th>
+            <th class="sort" data-sort="code" class="scope">Codigo</th>
+            <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+          </tr>
+        </thead>
+        <tbody class="list">
+          <tr>
+            <td class="id" style="display:none;"></td>
+            <td class="name" scope="row"></td>
+            <td class="code"></td>
+            <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </section>
+
+
 </body>
 
 </html>

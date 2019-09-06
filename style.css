@@ -1,3 +1,7 @@
+*{
+    /* border: 1px solid #009FFF; */
+}
+
 body {
     background: #009FFF;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);  /* Chrome 10-25, Safari 5.1-6 */
@@ -12,6 +16,16 @@ body {
 .title{
     font-size: 3vw;
 }
+
+.btn-section {
+    font-size: 3rem;
+}
+
+i.title {
+    font-size: 3rem;
+    display: inline-block;
+    padding: 0.5em 0.6em;
+} 
 
 #personList{
     margin: auto;
