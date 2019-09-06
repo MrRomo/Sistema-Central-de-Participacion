@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>IEEE</title>
+  <title>Sistema Central de Participacion - IEEE Student Branch Unimagdalena</title>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -72,10 +72,10 @@
             <input type="text" class="search form-control" id="searchPerson" placeholder="Buscar persona" />
           </th>
           <th colspan="3">
-            <button class="sort asc btn btn-success" data-sort="code">Codigo<i class="fas fa-sort"></i></button>
             <button class="sort asc btn btn-success" data-sort="name">Nombre<i class="fas fa-sort"></i></button>
+            <button class="sort asc btn btn-success" data-sort="code">Codigo<i class="fas fa-sort"></i></button>
             <button class="sort asc btn btn-success" data-sort="assistant">Asistencias<i class="fas fa-sort"></i></button>
-          </th>
+          </th> 
           <tr class="mx-auto">
             <th class="sort" data-sort="name" class="scope">Nombre</th>
             <th class="sort" data-sort="code" class="scope">Codigo</th>
@@ -103,7 +103,10 @@
       </table>
     </div>
   </section>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
   <script src="scripts/list.js"></script>
+  <script src="scripts/keys.js"></script>
   <script src="scripts/personas-list.js"></script>
 </body>
 
