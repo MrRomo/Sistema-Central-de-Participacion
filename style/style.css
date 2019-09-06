@@ -1,5 +1,5 @@
 *{
-    /* border: 1px solid #009FFF; */
+    border: 1px solid #009FFF;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
 }
 
 .background {
-    background-image: url('Background.png');
+    background-image: url('../resources/Background.png');
     background-size: cover;
 }
 
