@@ -12,7 +12,7 @@ async function registrarAsistente() {
         email: $('#email').val(),
         interest: checked,
         carreer: $('select').val(),
-        assistant: 0,
+        assistant: 1,
         createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
         updatedAt: firebase.firestore.Timestamp.fromDate(new Date())
     }

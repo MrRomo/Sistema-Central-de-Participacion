@@ -1,0 +1,108 @@
+.
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IEEE</title>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="images/LogoGamma.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="background">
+  <section class="mx-auto center">
+    <div class="col-md-6">
+      <div class="card-header">
+        <h2 class="text-center">Registro asistentes</h2>
+      </div>
+      <div class="card-body mx-auto m-4">
+        <div class="row form-group">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <input type="number" class="form-control" placeholder="Telefono" id="cell">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Email" id="email">
+          </div>
+        </div>
+
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="number" class="form-control" placeholder="Codigo" id="code" required>
+          </div>
+        </div>
+        <div class="row align-items-center mt-4 carrera">
+          <div class="col">
+            <select class="custom-select form-control" id="carreerSelector">
+              <option>No aplica</option>
+            </select>
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="interest" id="interest" value="true">
+                ¿Tiene interes en la Rama Estudiantil IEEE Unimagdalena?
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success mt-4" id="guardar" onclick="registrarPersona()">Registrar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de alerta error -->
+  <div class="modal " tabindex="-1" role="dialog" id="alertModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title">Error de formulario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="modalMessage"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+  <script src="keys.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
