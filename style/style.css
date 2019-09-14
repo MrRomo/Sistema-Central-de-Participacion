@@ -31,4 +31,10 @@ i.title {
 #personList{
     margin: auto;
     width: 100%;
+    
+}
+tbody{
+    height: 60%;
+    position: absolute;
+    overflow: auto;
 }

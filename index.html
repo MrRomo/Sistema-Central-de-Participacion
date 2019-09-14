@@ -36,7 +36,9 @@
             <img src="resources/LOGO.png" width="40%" style="display: inherit; margin: auto">
           </div>
           <div class="col-md-6">
-            <a class="text-dark" href="index.html"><h1 class="text-center title" style="margin: auto;">Sistema Central de Participacion</h1></a>
+            <a class="text-dark" href="index.html">
+              <h1 class="text-center title" style="margin: auto;">Sistema Central de Participacion</h1>
+            </a>
           </div>
           <div class="col-md-4 mx-auto d-flex justify-content-around" style="margin: auto;">
             <a href="personas.html" class="btn btn-info btn-section"><i class="fas fa-user-friends"></i></a>
@@ -54,30 +56,39 @@
       <div class="col-md-3 mx-auto">
         <div class="header text-center">
           <i class="fas fa-user-friends title"></i>
-          <a class="text-dark" href="personas.html"><h2>Personas</h2></a>
+          <a class="text-dark" href="personas.html">
+            <h2>Personas</h2>
+          </a>
         </div>
       </div>
       <div class="col-md-3 mx-auto">
         <div class="header text-center">
           <i class="fas fa-calendar-alt title"></i>
-          <a class="text-dark" href="eventos.html"><h2>Eventos</h2></a>
+          <a class="text-dark" href="eventos.html">
+            <h2>Eventos</h2>
+          </a>
         </div>
       </div>
       <div class="col-md-3 mx-auto">
         <div class="header text-center">
           <i class="fas fa-chart-line title"></i>
-          <a class="text-dark" href="estadisticas.html"><h2>Estadisticas</h2></a>
+          <a class="text-dark" href="estadisticas.html">
+            <h2>Estadisticas</h2>
+          </a>
         </div>
       </div>
       <div class="col-md-3 mx-auto">
         <div class="header text-center">
           <i class="fas fa-dollar-sign title"></i>
-          <a class="text-dark" href="pagos.html"><h2>Pagos</h2></a>
+          <a class="text-dark" href="pagos.html">
+            <h2>Pagos</h2>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ultimos registros -->
   <section class="container mx-auto">
     <div class="row">
       <div class="col-md-4">
@@ -85,25 +96,25 @@
           <h3>Ultimos Miembros</h3>
         </div>
         <div class="">
-            <div id=personList>
-                <table class="table table-striped">
-                  <thead>
-                    <tr class="mx-auto">
-                      <th class="sort" data-sort="name" class="scope">Nombre</th>
-                      <th class="sort" data-sort="code" class="scope">Codigo</th>
-                      <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
-                    </tr>
-                  </thead>
-                  <tbody class="list">
-                    <tr>
-                      <td class="id" style="display:none;"></td>
-                      <td class="name" scope="row"></td>
-                      <td class="code"></td>
-                      <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div id=personList>
+            <table class="table table-striped">
+              <thead>
+                <tr class="mx-auto">
+                  <th class="sort" data-sort="name" class="scope">Nombre</th>
+                  <th class="sort" data-sort="code" class="scope">Codigo</th>
+                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <td class="id" style="display:none;"></td>
+                  <td class="name" scope="row"></td>
+                  <td class="code"></td>
+                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
@@ -111,25 +122,25 @@
           <h3>Ultimos Eventos</h3>
         </div>
         <div class="">
-            <div id=personList>
-                <table class="table table-striped">
-                  <thead>
-                    <tr class="mx-auto">
-                      <th class="sort" data-sort="name" class="scope">Nombre</th>
-                      <th class="sort" data-sort="code" class="scope">Codigo</th>
-                      <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
-                    </tr>
-                  </thead>
-                  <tbody class="list">
-                    <tr>
-                      <td class="id" style="display:none;"></td>
-                      <td class="name" scope="row"></td>
-                      <td class="code"></td>
-                      <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div id=personList>
+            <table class="table table-striped">
+              <thead>
+                <tr class="mx-auto">
+                  <th class="sort" data-sort="name" class="scope">Nombre</th>
+                  <th class="sort" data-sort="code" class="scope">Codigo</th>
+                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <td class="id" style="display:none;"></td>
+                  <td class="name" scope="row"></td>
+                  <td class="code"></td>
+                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
@@ -137,30 +148,29 @@
           <h3>Ultimos pagos</h3>
         </div>
         <div class="">
-            <div id=personList>
-                <table class="table table-striped">
-                  <thead>
-                    <tr class="mx-auto">
-                      <th class="sort" data-sort="name" class="scope">Nombre</th>
-                      <th class="sort" data-sort="code" class="scope">Codigo</th>
-                      <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
-                    </tr>
-                  </thead>
-                  <tbody class="list">
-                    <tr>
-                      <td class="id" style="display:none;"></td>
-                      <td class="name" scope="row"></td>
-                      <td class="code"></td>
-                      <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div id=personList>
+            <table class="table table-striped">
+              <thead>
+                <tr class="mx-auto">
+                  <th class="sort" data-sort="name" class="scope">Nombre</th>
+                  <th class="sort" data-sort="code" class="scope">Codigo</th>
+                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <td class="id" style="display:none;"></td>
+                  <td class="name" scope="row"></td>
+                  <td class="code"></td>
+                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
 </body>
 
 </html>
