@@ -15,9 +15,9 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
-var meetingId = 'J2PtC6Z1sPpcEjhRYCAX'
 const person = db.collection('Person');
 const assistant = db.collection('Assistant');
-const meeting = db.collection('Meeting').doc(meetingId);
+const meeting = db.collection('Meeting');
+
 
 const formFields = ["firstname", "lastname", "cell", "code", "email"]

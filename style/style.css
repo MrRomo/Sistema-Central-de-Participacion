@@ -28,13 +28,10 @@ i.title {
     padding: 0.5em 0.6em;
 } 
 
-#personList{
+.tableList{
     margin: auto;
     width: 100%;
-    
+    height: 78%;
+    overflow:scroll;
 }
-tbody{
-    height: 60%;
-    position: absolute;
-    overflow: auto;
-}
+

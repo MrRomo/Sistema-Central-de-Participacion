@@ -1,4 +1,3 @@
-
 var options = {
     valueNames: ['id', 'name', 'code']
 }
@@ -8,7 +7,6 @@ var personList = new List('personList', options);
 
 $('#personList').click(async e=>{
     className = e.target.className.split(' ')
-
     console.log(className);
     if(!(className.indexOf('checkBtn')<0)){
         
