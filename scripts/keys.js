@@ -18,6 +18,9 @@ var db = firebase.firestore();
 const person = db.collection('Person');
 const assistant = db.collection('Assistant');
 const meeting = db.collection('Meeting');
+const personTest = db.collection('Person_test');
+const assistantTest = db.collection('Assistant_test');
+const meetingTest = db.collection('Meeting_test');
 
 
 const formFields = ["firstname", "lastname", "cell", "code", "email"]

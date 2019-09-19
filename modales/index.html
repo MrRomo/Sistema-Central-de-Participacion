@@ -1,0 +1,261 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IEEE</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!--<link rel="shortcut icon" href="images/LogoGamma.ico">
+  <link rel="stylesheet" href="style.css">-->
+</head>
+
+<body class="background">
+  <section class="mx-auto container mt-4">
+    <div class="mt-4 pt-4">
+      <div class="card-header">
+        <h2 class="text-center">Registro</h2>
+      </div>
+      <div class="card-body mx-auto m-4">
+        <div class="row ">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+          </div>
+        </div>
+        <div class="row align-items-center">
+          <div class="col mt-4">
+            <input type="number" class="form-control" placeholder="Telefono" id="cell">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="Email" id="email">
+          </div>
+        </div>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <input type="number" class="form-control" placeholder="Codigo" id="code" required>
+          </div>
+        </div>
+        <div class="row align-items-center mt-4 carrera">
+          <div class="col">
+            <select class="custom-select form-control" id="carreer">
+              <option value="" disabled selected> Carrera o programa academico</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-success mt-4" onclick="enviarcodigo()">Registrar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal de alerta error -->
+  <div class="modal fade" id="alertModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title">Error de formulario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="alertModalMsg"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de codigo -->
+  <div class="modal fade￼" id="codeModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-success">
+          <h5 class="modal-title">Codigo de verificación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>Ingrese el ultimo codigo enviado a su correo electronico</h3>
+          <input type="text" class="form-control" placeholder="codigo de verificacion" id="codeInput">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-info" onclick="enviarcodigo()">Reenviar</button>
+          <button type="button" class="btn btn-success" onclick="confirmarCodigo()">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+
+  <!-- Keys de registro -->
+  <script type="text/javascript">
+    String.prototype.capitalize = function () {
+      return this.replace(/(?:^|\s)\S/g, function (a) { return a.toUpperCase(); });
+    };
+
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDsfcZ4l77h_AeeAquk5BESGY9nZedLjhA",
+      authDomain: "ieee-a5f48.firebaseapp.com",
+      databaseURL: "https://ieee-a5f48.firebaseio.com",
+      projectId: "ieee-a5f48",
+      storageBucket: "",
+      messagingSenderId: "1007853756581",
+      appId: "1:1007853756581:web:11707a50a352b2ed"
+    }
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    const person = db.collection('Person_test');
+
+    const formFields = ["firstname", "lastname", "cell", "code", "email"]
+
+    //Funcion de error en formulario, muestra el mensaje en una ventana emergente 
+
+    function errorSaving(message) {
+
+      $('#alertModal').modal('toggle')
+      $('#alertModalMsg')[0].innerHTML = message
+
+    }
+    //Setear el Menu desplegable de las carreras
+    var carreras = ["ADMINISTRACIÓN DE EMPRESAS", "ADMINISTRACIÓN DE EMPRESAS TURÍSTICAS Y HOTELERAS POR CICLOS PROPEDÉUTICOS",
+      "ADMINISTRACIÓN DE LA SEGURIDAD Y SALUD EN EL TRABAJO POR CICLOS PROPEDÉUTICOS",
+      "ADMINISTRACIÓN PÚBLICA POR CICLOS PROPEDÉUTICOS", "ANTROPOLOGÍA", "BIOLOGÍA", "CINE Y AUDIOVISUALES",
+      "CONTADURÍA PÚBLICA", "DERECHO", "ECONOMÍA", "ENFERMERÍA", "INGENIERÍA AGRONÓMICA", "INGENIERÍA AMBIENTAL Y SANITARIA", "INGENIERÍA CIVIL",
+      "INGENIERÍA DE SISTEMAS", "INGENIERÍA ELECTRÓNICA", "INGENIERÍA INDUSTRIAL", "INGENIERÍA PESQUERA", "LICENCIATURA EN EDUCACIÓN INFANTIL",
+      "LICENCIATURA EN INFORMÁTICA", "MEDICINA", "NEGOCIOS INTERNACIONALES", "ODONTOLOGÍA", "PROFESIONAL EN DEPORTE", "PSICOLOGÍA"]
+    var optionsSelector = []
+
+    carreras.forEach(e => {
+      optionsSelector.push(`<option>${e}</option>`)
+    })
+
+    $("#carreer").append(optionsSelector);
+
+  </script>
+
+  <script type="text/javascript">
+
+    var code = 0;
+    $("#codigo").on("keydown", function () {
+      console.log($('#codigo').val() + " " + codigoV);
+      if ($('#codigo').val() == codigoV) {
+
+        $("#guardar").removeAttr('disabled');
+
+      } else {
+        $("#guardar").attr('disabled', 'disabled');
+      }
+    });
+
+    function enviarcodigo() {
+      codeV = Math.floor(Math.random() * 9999) + 1000;
+      console.log("enviando codigo");
+      // validacion por expresion regular
+
+      const email = $('#email').val(); //change form to id or containment selector
+      const firstname = $('#firstname').val()
+      const lastname = $('#lastname').val()
+      const code = $('#code').val()
+      const cell = $('#cell').val()
+      const carreer = $('#carreer').val()
+
+      if ([email, firstname, lastname, code, cell, carreer].indexOf(null) > -1) {
+        errorSaving('Debe ingresar todos los campos');
+        return false;
+      }
+
+      console.log(firstname, lastname, code, cell, carreer, email);
+
+      var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
+      if (email == '' || !re.test(email)) {
+        errorSaving('Por favor ingrese un email valido: ' + email);
+        return false;
+      }
+
+      $.ajax({
+        type: 'GET',
+        url: 'https://script.google.com/macros/s/AKfycbzXkjPBcTtMlnyqIgPKNClS1w19HmraoFDOxci_yJyqOvxImOsY/exec?email=' + email + '&code=' + codeV,
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function (data) {
+          console.log(data);
+          console.log('Enviado con exito');
+        }
+      })
+      setTimeout(() => {
+        $('#codeModal').modal('show')
+      }, 700)
+
+    }
+
+
+    function confirmarCodigo() {
+      if (codeV == $('#codeInput').val()) {
+        console.log('Codigo confirmado¡¡');
+        registrarPersona()
+      }
+      else {
+        alert('Codigo erroneo')
+      }
+    }
+
+  </script>
+
+  <script type="text/javascript">
+
+    async function registrarPersona() {
+      let formData = {
+        firstname: $('#firstname').val(),
+        lastname: $('#lastname').val(),
+        lastname: $('#lastname').val(),
+        cell: parseInt($('#cell').val()),
+        code: parseInt($('#code').val()),
+        email: $('#email').val(),
+        carreer: $('#carreer').val(),
+        assistant: 0,
+        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        updatedAt: firebase.firestore.Timestamp.fromDate(new Date())
+      }
+      console.log(`Guardando los datos de la persona: ${formData}`);
+
+      try {
+        const Person = await person.doc($('#code').val()).get()
+        if (Person.exists) name = Person.data().firstname + " " + Person.data().lastname
+        console.log('Person and name: ', Person, name);
+        (Person.exists) ? errorSaving('Esta persona ya existe: ' + Person.data().firstname + " " + Person.data().lastname) : await person.doc($('#code').val()).set(formData)
+        console.log("Registrado con exito")
+        $('#codeModal').modal('hide')
+        alert('Se ha registrado con exito')
+      } catch (error) {
+        console.log(error);
+        alert('Error al guardar en la base de datos, revise su conexion a internet o contacte con el supervisor.')
+      }
+    }
+
+  </script>
+</body>
+
+</html>

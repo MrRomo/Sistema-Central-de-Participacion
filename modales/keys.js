@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 var meetingId = 'J2PtC6Z1sPpcEjhRYCAX' // id de la reunion donde se va a registrar a los asistentes
-const person = db.collection('Person'); //
+const person = db.collection('Person_test'); //
 const assistant = db.collection('Assistant');
 const meeting = db.collection('Meeting').doc(meetingId);
 
