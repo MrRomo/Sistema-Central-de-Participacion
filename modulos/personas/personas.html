@@ -57,7 +57,7 @@
         </div>
       </div>
       <div class="col-md-6 d-flex justify-content-end" style="align-items: center;">
-        <a class="btn btn-success" href="">Agregar persona </a>
+        <button class="btn btn-success" data-target="#addPersonModal" data-toggle="modal">Agregar persona </button>
       </div>
     </div>
   </section>
@@ -73,8 +73,9 @@
           <th colspan="3">
             <button class="sort asc btn btn-success" data-sort="name">Nombre<i class="fas fa-sort"></i></button>
             <button class="sort asc btn btn-success" data-sort="code">Codigo<i class="fas fa-sort"></i></button>
-            <button class="sort asc btn btn-success" data-sort="assistant">Asistencias<i class="fas fa-sort"></i></button>
-          </th> 
+            <button class="sort asc btn btn-success" data-sort="assistant">Asistencias<i
+                class="fas fa-sort"></i></button>
+          </th>
           <tr class="mx-auto">
             <th class="sort" data-sort="name" class="scope">Nombre</th>
             <th class="sort" data-sort="code" class="scope">Codigo</th>
@@ -102,11 +103,138 @@
       </table>
     </div>
   </section>
+  <div class="modal fade￼" id="addPersonModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-info">
+          <h5 class="modal-title">Agregar persona</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row ">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="number" class="form-control" placeholder="Telefono" id="cell">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" id="email">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Codigo" id="code" required>
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Membresia" id="membership">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="type">
+                <option value="Voluntario"selected>Voluntario</option>
+                <option value="Miembro">Miembro</option>
+              </select>
+            </div>
+          </div>
+          <div class="row align-items-center mt-4 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="carreer">
+                <option value="" disabled selected> Carrera o programa academico</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" onclick="agregarPersona()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
   <script src="../../scripts/list.js"></script>
   <script src="../../scripts/keys.js"></script>
   <script src="personas-list.js"></script>
+
+  <script>
+    var carreras = ["ADMINISTRACIÓN DE EMPRESAS", "ADMINISTRACIÓN DE EMPRESAS TURÍSTICAS Y HOTELERAS POR CICLOS PROPEDÉUTICOS",
+      "ADMINISTRACIÓN DE LA SEGURIDAD Y SALUD EN EL TRABAJO POR CICLOS PROPEDÉUTICOS",
+      "ADMINISTRACIÓN PÚBLICA POR CICLOS PROPEDÉUTICOS", "ANTROPOLOGÍA", "BIOLOGÍA", "CINE Y AUDIOVISUALES",
+      "CONTADURÍA PÚBLICA", "DERECHO", "ECONOMÍA", "ENFERMERÍA", "INGENIERÍA AGRONÓMICA", "INGENIERÍA AMBIENTAL Y SANITARIA", "INGENIERÍA CIVIL",
+      "INGENIERÍA DE SISTEMAS", "INGENIERÍA ELECTRÓNICA", "INGENIERÍA INDUSTRIAL", "INGENIERÍA PESQUERA", "LICENCIATURA EN EDUCACIÓN INFANTIL",
+      "LICENCIATURA EN INFORMÁTICA", "MEDICINA", "NEGOCIOS INTERNACIONALES", "ODONTOLOGÍA", "PROFESIONAL EN DEPORTE", "PSICOLOGÍA"]
+    var optionsSelector = []
+
+    carreras.forEach(e => {
+      optionsSelector.push(`<option>${e}</option>`)
+    })
+
+    $("#carreer").append(optionsSelector)
+
+    async function agregarPersona() {
+    
+      const email = $('#email').val(); //change form to id or containment selector
+      var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm;
+      if (email == '' || !re.test(email)) {
+        alert('Por favor ingrese un email valido: ' + email);
+        return false;
+      }
+      let formData = {
+        firstname: $('#firstname').val(),
+        lastname: $('#lastname').val(),
+        lastname: $('#lastname').val(),
+        membership: $('#membership').val(),
+        cell: parseInt($('#cell').val()),
+        code: parseInt($('#code').val()),
+        email: $('#email').val(),
+        type: $('#type').val(),
+        carreer: $('#carreer').val(),
+        assistant: 0,
+        createdAt: firebase.firestore.Timestamp.fromDate(new Date()),
+        updatedAt: firebase.firestore.Timestamp.fromDate(new Date())
+      }
+      console.log(`Guardando los datos de la persona: ${formData}`);
+
+      try {
+        const Person = await person.doc($('#code').val()).get()
+        if (Person.exists) name = Person.data().firstname + " " + Person.data().lastname
+        console.log('Person and name: ', Person, name);
+        (Person.exists) ? errorSaving('Esta persona ya existe: ' + Person.data().firstname + " " + Person.data().lastname) : await person.doc($('#code').val()).set(formData)
+        await personV2.doc().set(formData)
+        console.log("Registrado con exito")
+        $('#codeModal').modal('hide')
+        alert('Se ha registrado con exito')
+        $('#firstname').val('')
+        $('#lastname').val('')
+        $('#lastname').val('')
+        $('#cell').val('')
+        $('#code').val('')
+        $('#membership').val('')
+        $('#email').val('')
+        $('#carreer').val('')
+      } catch (error) {
+        console.log(error);
+        alert('Error al guardar en la base de datos, revise su conexion a internet o contacte con el supervisor.')
+      }
+      getPerson()
+    }
+
+  </script>
+
 </body>
 
 </html>

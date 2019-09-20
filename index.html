@@ -136,7 +136,7 @@
                 <tr>
                   <td class="title_conference" scope="row"></td>
                   <td class="location"></td>
-                  <td class="assistants"></td>
+                  <td class="assistant"></td>
                 </tr>
               </tbody>
             </table>
@@ -153,7 +153,7 @@
 <script src="scripts/list.js"></script>
 <script src="scripts/keys.js"></script>
 <script>
-  var eventList = new List('eventList', { valueNames: ['title_conference', 'location', 'assistants'] });
+  var eventList = new List('eventList', { valueNames: ['title_conference', 'location', 'assistant'] });
   var personList = new List('personList', { valueNames: ['name', 'type'] });
 
   async function fillList() {
@@ -175,7 +175,7 @@
       data = doc.data()
       eventList.add({
         title_conference: data.title.capitalize(), location: data.location, 
-        assistants: data.assistants
+        assistant: data.assistant
       });
 
     })
