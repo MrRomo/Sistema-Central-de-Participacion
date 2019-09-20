@@ -20,7 +20,6 @@ const person = db.collection('Person');
 const assistant = db.collection('Assistant');
 const meeting = db.collection('Meeting').doc(meetingId);
 
-const formFields = ["firstname", "lastname", "cell", "code", "email"]
 
 async function getPerson() {
     const Person = await person.get()

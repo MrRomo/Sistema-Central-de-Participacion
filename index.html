@@ -41,9 +41,11 @@
             </a>
           </div>
           <div class="col-md-4 mx-auto d-flex justify-content-around" style="margin: auto;">
-            <a href="modulos/personas/personas.html" class="btn btn-info btn-section"><i class="fas fa-user-friends"></i></a>
+            <a href="modulos/personas/personas.html" class="btn btn-info btn-section"><i
+                class="fas fa-user-friends"></i></a>
             <a href="" class="btn btn-info btn-section"><i class="fas fa-calendar-alt"></i></a>
-            <a href="modulos/eventos/eventos.html" class="btn btn-info btn-section"><i class="fas fa-chart-line"></i></a>
+            <a href="modulos/eventos/eventos.html" class="btn btn-info btn-section"><i
+                class="fas fa-chart-line"></i></a>
           </div>
         </div>
       </div>
@@ -91,7 +93,8 @@
   <!-- ultimos registros -->
   <section class="container mx-auto">
     <div class="row">
-      <div class="col-md-4">
+      <!-- Ultimas personas -->
+      <div class="col-md-6">
         <div class="card-header">
           <h3>Ultimos Miembros</h3>
         </div>
@@ -101,76 +104,84 @@
               <thead>
                 <tr class="mx-auto">
                   <th class="sort" data-sort="name" class="scope">Nombre</th>
-                  <th class="sort" data-sort="code" class="scope">Codigo</th>
-                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                  <th class="sort" data-sort="type" class="scope">Tipo</th>
                 </tr>
               </thead>
               <tbody class="list">
                 <tr>
-                  <td class="id" style="display:none;"></td>
                   <td class="name" scope="row"></td>
-                  <td class="code"></td>
-                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                  <td class="type"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <!-- Ultimos Eventos -->
+      <div class="col-md-6">
         <div class="card-header">
           <h3>Ultimos Eventos</h3>
         </div>
         <div class="">
-          <div id=personList>
+          <div id=eventList>
             <table class="table table-striped">
               <thead>
                 <tr class="mx-auto">
-                  <th class="sort" data-sort="name" class="scope">Nombre</th>
-                  <th class="sort" data-sort="code" class="scope">Codigo</th>
-                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
+                  <th class="sort" data-sort="title_conference" class="scope">Nombre</th>
+                  <th class="sort" data-sort="location" class="scope">Lugar</th>
+                  <th class="sort" data-sort="assistant" class="scope">Asistentes</th>
                 </tr>
               </thead>
               <tbody class="list">
                 <tr>
-                  <td class="id" style="display:none;"></td>
-                  <td class="name" scope="row"></td>
-                  <td class="code"></td>
-                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
+                  <td class="title_conference" scope="row"></td>
+                  <td class="location"></td>
+                  <td class="assistants"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card-header">
-          <h3>Ultimos pagos</h3>
-        </div>
-        <div class="">
-          <div id=personList>
-            <table class="table table-striped">
-              <thead>
-                <tr class="mx-auto">
-                  <th class="sort" data-sort="name" class="scope">Nombre</th>
-                  <th class="sort" data-sort="code" class="scope">Codigo</th>
-                  <th class="sort" data-sort="assistant" class="scope">Asistencia</th>
-                </tr>
-              </thead>
-              <tbody class="list">
-                <tr>
-                  <td class="id" style="display:none;"></td>
-                  <td class="name" scope="row"></td>
-                  <td class="code"></td>
-                  <td><button class="btn btn-success checkBtn"><i class="fas fa-check checkBtn"></i></button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </section>
 </body>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+<script src="scripts/jquery-3.4.1.js"></script>
+<script src="scripts/list.js"></script>
+<script src="scripts/keys.js"></script>
+<script>
+  var eventList = new List('eventList', { valueNames: ['title_conference', 'location', 'assistants'] });
+  var personList = new List('personList', { valueNames: ['name', 'type'] });
+
+  async function fillList() {
+    const Person = await person.orderBy('updatedAt', 'desc').limit(10).get()
+    const Meeting = await meeting.get()
+    personList.clear()
+    eventList.clear()
+
+    console.log(Person,Meeting);
+    
+    await Person.forEach(doc => {
+      data = doc.data()
+      personList.add({
+        name: `${data.firstname} ${data.lastname}`.capitalize(), type: data.type
+      });
+
+    })
+    await Meeting.forEach(doc => {
+      data = doc.data()
+      eventList.add({
+        title_conference: data.title.capitalize(), location: data.location, 
+        assistants: data.assistants
+      });
+
+    })
+  }
+
+  fillList()
+</script>
 
 </html>

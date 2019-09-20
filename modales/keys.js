@@ -20,7 +20,6 @@ const person = db.collection('Person_test'); //
 const assistant = db.collection('Assistant');
 const meeting = db.collection('Meeting').doc(meetingId);
 
-const formFields = ["firstname", "lastname", "cell", "code", "email"]
 
 //Funcion de error en formulario, muestra el mensaje en una ventana emergente 
 
