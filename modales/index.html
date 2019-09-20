@@ -156,18 +156,6 @@
 
   <script type="text/javascript">
 
-    var code = 0;
-    $("#codigo").on("keydown", function () {
-      console.log($('#codigo').val() + " " + codigoV);
-      if ($('#codigo').val() == codigoV) {
-
-        $("#guardar").removeAttr('disabled');
-
-      } else {
-        $("#guardar").attr('disabled', 'disabled');
-      }
-    });
-
     function enviarcodigo() {
       codeV = Math.floor(Math.random() * 9999) + 1000;
       console.log("enviando codigo");
@@ -211,7 +199,7 @@
 
 
     function confirmarCodigo() {
-      if (codeV == $('#codeInput').val()) {
+      if (`${codeV}G` == $('#codeInput').val()) {
         console.log('Codigo confirmado¡¡');
         registrarPersona()
       }
@@ -247,6 +235,9 @@
         console.log("Registrado con exito")
         $('#codeModal').modal('hide')
         alert('Se ha registrado con exito')
+        setTimeout(()=>{
+          window.location.href = "https://edu.ieee.org/co-unimag/";
+        },1500)
       } catch (error) {
         console.log(error);
         alert('Error al guardar en la base de datos, revise su conexion a internet o contacte con el supervisor.')
