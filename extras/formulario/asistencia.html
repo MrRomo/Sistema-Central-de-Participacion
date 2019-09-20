@@ -1,0 +1,105 @@
+.<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>IEEE</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="shortcut icon" href="images/LogoGamma.ico">
+  <link rel="stylesheet" href="css/pagestyle.css">
+
+</head>
+<body>
+
+	<section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+          <div class="row">
+            <div class="col text-center">
+              <h1>Register</h1>
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/21/IEEE_logo.svg/1200px-IEEE_logo.svg.png"  width="300px" height="200px">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="Company Name" id="Name">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="text" class="form-control" placeholder="studen code" id="code">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" id="mail">
+            </div>
+          </div>
+
+          <div class="row justify-content-start mt-4">
+            <div class="col">
+              <div class="form-check">
+   
+              </div>
+
+              <button class="btn btn-primary mt-4" onclick="guardar()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDsfcZ4l77h_AeeAquk5BESGY9nZedLjhA",
+    authDomain: "ieee-a5f48.firebaseapp.com",
+    databaseURL: "https://ieee-a5f48.firebaseio.com",
+    projectId: "ieee-a5f48",
+    storageBucket: "",
+    messagingSenderId: "1007853756581",
+    appId: "1:1007853756581:web:11707a50a352b2ed"
+  };
+  // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+   var db = firebase.firestore();
+</script>
+<script type="text/javascript">
+  
+function guardar() {
+
+  // body...
+alert("hola");
+  db.collection("asitentes").doc($('#code').val()).set({
+    nombre: $('#Name').val(),
+    correo: $('#mail').val()
+ 
+
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ");
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
+
+</script>
+</body>
+</html>
