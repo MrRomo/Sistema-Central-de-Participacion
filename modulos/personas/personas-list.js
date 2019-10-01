@@ -19,7 +19,7 @@ async function getPerson() {
     await Person.forEach(doc => {
         data = doc.data()
         personList.add({
-            id: data.code,
+            id: data.id,
             firstname: `${data.firstname}`.capitalize(),
             lastname: `${data.lastname}`.capitalize(),
             code: data.code,
@@ -36,20 +36,53 @@ async function getPerson() {
 
 getPerson()
 
-$("tbody").click(e => {
+$("tbody").click(async e => {
     let target = e.target
     let parent = $(target).parent()
     let children = parent[0].children
     console.log(children);
-    console.log(Object.keys(children));
-    var data = {}
+
+    let data = {}
     for (let key = 0; key < children.length; key++) {
         keyName = children[key].className
-        data[keyName] = children[key].textContent        
+        data[keyName] = children[key].textContent
         $(`#${keyName}Edit`).val(children[key].textContent)
     }
     idEditPerson = data.id
-    console.log(idEditPerson);
-    $("#editPersonModal").modal('show')
-    console.log($("#editPersonModal"))
+
+    let idMeeting = []
+    let allMeetings = []
+
+    console.log(data);
+
+    let result = await assistant.where('idPerson', '==', data.id).get()
+        .then(snapshot => {
+            if (snapshot.empty) {
+                console.log('No matching documents.');
+                return;
+            }
+            snapshot.forEach(doc => {
+                idMeeting.push(doc.data().idMeeting)
+            });
+        })
+        .catch(err => {
+            console.log('Error getting documents', err);
+        });
+
+    console.log('Searching meetings', idMeeting);
+
+    idMeeting.forEach(async id => {
+        meet = await meeting.where(firebase.firestore.FieldPath.documentId(), '==', id).get()
+        meet.forEach(e=>{
+            if (!e.empty) {
+                data = e.data()
+                data.id = e.id
+                allMeetings.push(data)
+            }
+        })
+    })
+
+    console.log(allMeetings);
+
+    $("#profilePersonModal").modal('show')
 })

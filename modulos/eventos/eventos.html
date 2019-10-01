@@ -96,6 +96,141 @@
       </table>
     </div>
   </section>
+  <!-- add person Modal -->
+  <div class="modal fade￼" id="addMeetingModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-info">
+          <h5 class="modal-title">Agregar persona</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row ">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Nombres" id="firstname" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Apellidos" id="lastname" required>
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col mt-4">
+              <input type="number" class="form-control" placeholder="Telefono" id="cell">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" id="email">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Codigo" id="code" required>
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Membresia" id="membership">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="type">
+                <option value="Voluntario" selected>Voluntario</option>
+                <option value="Miembro">Miembro</option>
+              </select>
+            </div>
+          </div>
+          <div class="row align-items-center mt-4 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="carreer">
+                <option value="" disabled selected> Carrera o programa academico</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" onclick="agregarPersona()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit person Modal -->
+  <div class="modal fade￼" id="editMeetingModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content ">
+        <div class="modal-header bg-info">
+          <h5 class="modal-title">Editar Persona</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span class="card-subtitle">Nombres</span>
+          <div class="row mb-2 mt-2">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Nombres" id="firstnameEdit" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Apellidos" id="lastnameEdit" required>
+            </div>
+          </div>
+          <span class="card-subtitle">Telefono</span>
+          <div class="row align-items-center">
+            <div class="col mt-2 mb-2">
+              <input type="number" class="form-control" placeholder="Telefono" id="cellEdit">
+            </div>
+          </div>
+          <span class="card-subtitle">Email</span>
+          <div class="row align-items-center mt-2 mb-2">
+            <div class="col">
+              <input type="email" class="form-control" placeholder="Email" id="emailEdit">
+            </div>
+          </div>
+          <span class="card-subtitle">Codigo</span>
+          <div class="row align-items-center mt-2 mb-2">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Codigo" id="codeEdit" required>
+            </div>
+          </div>
+          <span class="card-subtitle">Numero de Membresia</span>
+          <div class="row align-items-center mt-2 mb-2">
+            <div class="col">
+              <input type="number" class="form-control" placeholder="Membresia" id="membershipEdit">
+            </div>
+          </div>
+          <span class="card-subtitle">Tipo de persona</span>
+
+          <div class="row align-items-center mt-2 mb-2 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="typeEdit">
+                <option value="Voluntario" selected>Voluntario</option>
+                <option value="Miembro">Miembro</option>
+              </select>
+            </div>
+          </div>
+          <span class="card-subtitle">Carrera</span>
+
+          <div class="row align-items-center mt-2 mb-2 carrera">
+            <div class="col">
+              <select class="custom-select form-control" id="carreerEdit">
+                <option value="" disabled selected> Carrera o programa academico</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" onclick="eliminarPersona()" id="deletePerson">Eliminar</button>
+          <button type="button" class="btn btn-success" onclick="editarPersona()" id="editPerson">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
   <script src="../../scripts/list.js"></script>
