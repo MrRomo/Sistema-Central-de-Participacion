@@ -15,7 +15,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
-const test = ''
+var test = ''
 
 db.collection('Variables').get()
 .then((result)=>{
