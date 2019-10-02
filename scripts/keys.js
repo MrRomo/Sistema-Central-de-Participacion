@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 async function getVar (){ return await db.collection('Variables').get()}
-const variables = await getVar()
+const variables = getVar()
 const test = variables.docs[0].data().dev
 const person = db.collection('Person'+test);
 const assistant = db.collection('Assistant'+test);
