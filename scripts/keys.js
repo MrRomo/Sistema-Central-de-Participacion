@@ -15,9 +15,12 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
-const person = db.collection('Person');
-const assistant = db.collection('Assistant');
-const meeting = db.collection('Meeting');
+async function getVar (){ return await db.collection('Variables').get()}
+const variables = await getVar()
+const test = variables.docs[0].data().dev
+const person = db.collection('Person'+test);
+const assistant = db.collection('Assistant'+test);
+const meeting = db.collection('Meeting'+test);
 // test collection
 const personTest = db.collection('Person_test');
 const assistantTest = db.collection('Assistant_test');
