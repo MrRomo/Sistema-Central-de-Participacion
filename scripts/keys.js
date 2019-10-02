@@ -15,7 +15,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
-const person = db.collection('Person_test');
+const person = db.collection('Person');
 const assistant = db.collection('Assistant');
 const meeting = db.collection('Meeting');
 // test collection
